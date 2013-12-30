@@ -105,13 +105,19 @@ var fitModel = kriging.train(t, x, y, model, 0, 100);</pre>
       <ul>
 	<li>
           <h3>Probability Model</h3>
-          <p>The model used is a 2-dimensional gaussian process with a prior on the parameters of the kernel function. A variety of different kernel functions (or variogram models) are included - exponential, gaussian or spherical. The variance &sigma;<sup>2</sup> of the noise process is adjustable providing a smoothing effect by increasing the uncertainty.</p>
+          <p>The model used is a 2-dimensional gaussian process, <b>y</b>, with a prior on the parameters of the kernel function. One of a variety of different kernel functions (or variogram models) generate the Gram matrix <b>K</b>. The variance &sigma;<sup>2</sup> of the noise process is adjustable, providing a smoothing effect by increasing the uncertainty of the likelihood <b>t</b>.</p>
 	  <pre><b>y</b>&nbsp;&nbsp; ~ N(<b>0</b>, <b>K</b>)
 <b>t</b>|<b>y</b> ~ N(<b>t</b>|<b>y</b>, &sigma;<sup>2</sup><b>I</b>)</pre>
-
         </li>
 	<li>
 	  <h3>Variogram</h3>
+	    <p>The various variogram models can be interpreted as kernel functions for 2-dimensional coordinates <strong>a</strong>, <strong>b</strong> and parameters nugget, range, sill and A. Reparameterized as a linear function, with w = [nugget, (sill-nugget)/range], this becomes:</p>
+	    <pre>
+Gaussian: k(<strong>a</strong>,<strong>b</strong>) = w[0] + w[1] * ( 1 - exp{ -( ||<strong>a</strong>-<strong>b</strong>|| / range )<sup>2</sup> / A } )
+Exponential: k(<strong>a</strong>,<strong>b</strong>) = w[0] + w[1] * ( 1 - exp{ -( ||<strong>a</strong>-<strong>b</strong>|| / range ) / A } )
+Spherical: k(<strong>a</strong>,<strong>b</strong>) = w[0] + w[1] * ( 1.5 * ( ||<strong>a</strong>-<strong>b</strong>|| / range ) - 0.5 * ( ||<strong>a</strong>-<strong>b</strong>|| / range )<sup>3</sup> )</pre>
+	    <p>Bayesian regression is used to estimate the parameters with the prior:<p>
+	    <pre><b>w</b> ~ N(w|<strong>0</strong>, α<strong>I</strong>)</pre>
 	</li>
 	<li>
 	  <h3>Prior and noise process</h3>
