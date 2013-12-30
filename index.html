@@ -84,8 +84,8 @@
     </script>
     <div id="what"></div>
       <h2>.What is this?</h2>
-      <p><strong>kriging.js</strong> is a Javascript library for mapping and predicting spatial data using the kriging algorithm. This library allows one to model spatial data and generate maps by predicting new values within the range of the given data.</p>
-      <p>The easiest way to get started is to <a href="http://rawgithub.com/oeo4b/kriging.js/master/kriging.js" download="kriging.js">download</a> the Javascript library (or link directly to krigingjs.com/kriging.js) and attach it to your html code. Then, to train a <a href="#documentation">model</a> with coordinates (<strong>x</strong>, <strong>y</strong>), values <strong>t</strong> on <a href="#documentation">parameters</a> &sigma;<sup>2</sup> and &alpha;:</p>
+      <p><strong>kriging.js</strong> is a Javascript library for mapping and predicting spatial data using the <a href="http://en.wikipedia.org/wiki/Kriging">kriging algorithm</a>. This library allows one to model spatial data and generate maps by predicting new values within the range of the given data.</p>
+      <p>The easiest way to get started is to <a href="http://rawgithub.com/oeo4b/kriging.js/master/kriging.js" download="kriging.js">download</a> the Javascript library (or link directly to krigingjs.com/kriging.js) and attach it to your html code. Then, to train a <a href="#documentation">model</a> with coordinates (<strong>x</strong>, <strong>y</strong>) and values <strong>t</strong> on <a href="#documentation">parameters</a> &sigma;<sup>2</sup> and &alpha;:</p>
       <pre>var model = "exponential";
 var sigma2 = 0, alpha = 100;
 var fitModel = kriging.train(t, x, y, model, 0, 100);</pre>
@@ -93,6 +93,7 @@ var fitModel = kriging.train(t, x, y, model, 0, 100);</pre>
       <pre>var tnew = kriging.predict(xnew, ynew, fitModel);</pre>
     <div id="examples"></div>
       <h2>.Maps</h2>
+      <p>
     <div id="documentation"></div>
       <h2>.Documentation</h2>
     <div id="footer">
