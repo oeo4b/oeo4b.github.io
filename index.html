@@ -13,8 +13,7 @@
         font-family: 'Imprima';
       }
       a {
-        text-decoration: none;
-        color: black;
+        color: black; 
       }
       p {
         padding-left: 40px;
@@ -24,6 +23,13 @@
       }
       h2 {
         padding-left: 10px;
+      }
+      pre {
+        padding-left: 60px;
+        padding-right: 40px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: grey;
       }
       .logo {
         font-size: 36px;
@@ -78,7 +84,9 @@
     </script>
     <div id="what"></div>
       <h2>.What is this?</h2>
-      <p><i>kriging.js</i> is a Javascript library for mapping and predicting spatial data using the kriging algorithm. This library allows one to model spatial data and generate maps by predicting new values within the range of the given data.</p>
+      <p><strong>kriging.js</strong> is a Javascript library for mapping and predicting spatial data using the kriging algorithm. This library allows one to model spatial data and generate maps by predicting new values within the range of the given data.</p>
+      <p>The easiest way to get started is to <a href="http://rawgithub.com/oeo4b/kriging.js/master/kriging.js" download="kriging.js">download</a> the Javascript library and link it to your html code. Then, to train a model with coordinates (<strong>x</strong>, <strong>y</strong>) and values <strong>t</strong>:</p>
+      <pre>var myModel = kriging.train(t, x, y, 0, 100);</pre>
     <div id="examples"></div>
       <h2>.Maps</h2>
     <div id="documentation"></div>
