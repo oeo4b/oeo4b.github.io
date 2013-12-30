@@ -13,8 +13,7 @@
         font-family: 'Imprima';
       }
       #header {
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding: 10px;
       }
       #map {
         background-color: red;
@@ -28,10 +27,14 @@
     <canvas id="map">
     </canvas>
     <script type="text/javascript">
+      // Init canvas dimensions
       var canvas = document.getElementById("map");
       var header = document.getElementById("header");
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight - header.clientHeight;
+
+      // Set up event handlers
+      
 
     </script>
     <div id="footer">
