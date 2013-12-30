@@ -104,11 +104,11 @@ var fitModel = kriging.train(t, x, y, model, 0, 100);</pre>
       <h2>.Documentation</h2>
       <ul>
 	<li>
-	  <h3>Introduction</h3>
-	</li>
-	<li>
           <h3>Probability Model</h3>
-          <p>The model used is a 2-dimensional gaussian process with a prior on the parameters of the kernel function. A variety of different kernel functions (or variogram models) are included - exponential, gaussian or spherical. The variance &sigma;<sup>2</sup> of the noise process is adjustable allowing 
+          <p>The model used is a 2-dimensional gaussian process with a prior on the parameters of the kernel function. A variety of different kernel functions (or variogram models) are included - exponential, gaussian or spherical. The variance &sigma;<sup>2</sup> of the noise process is adjustable providing a smoothing effect by increasing the uncertainty.</p>
+	  <pre>y ~ N(<b>0</b>, <b>K</b>)
+<b>t</b>|<b>y</b> ~ N(<b>t</b>|<b>y</b>, &sigma;<sup>2</sup><b>I</b>)</pre>
+
         </li>
 	<li>
 	  <h3>Variogram</h3>
@@ -122,7 +122,7 @@ var fitModel = kriging.train(t, x, y, model, 0, 100);</pre>
       </ul>
       <p></p>
     <div id="footer">
-      <small style="padding-left: 10px">Copyright 2011-2014. Released under <a href="http://opensource.org/licenses/MIT">The MIT License</a>.</small>
+      <small style="padding-left: 20px">Copyright 2011-2014. Released under <a href="http://opensource.org/licenses/MIT">The MIT License</a>.</small>
     </div>
   </body>
 </html>
