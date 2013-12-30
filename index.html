@@ -9,9 +9,10 @@
         font-family: 'Imprima';
         padding: 0px;
         margin: 0px;
+        top: 0px;
       }
       #header {
-        height: 100px;
+        height: 149px;
       }
       #map {
         background-color: red;
@@ -28,6 +29,8 @@
     <canvas id="map">
     </canvas>
     <script type="text/javascript">
+      var canvas = document.getElementById("map");
+      canvas.height = window.innerHeight - 149;
     </script>
     <div id="footer">
     </div>
