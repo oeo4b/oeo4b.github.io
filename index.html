@@ -116,14 +116,12 @@ var fitModel = kriging.train(t, x, y, model, 0, 100);</pre>
 Gaussian: k(<strong>a</strong>,<strong>b</strong>) = w[0] + w[1] * ( 1 - exp{ -( ||<strong>a</strong>-<strong>b</strong>|| / range )<sup>2</sup> / A } )
 Exponential: k(<strong>a</strong>,<strong>b</strong>) = w[0] + w[1] * ( 1 - exp{ -( ||<strong>a</strong>-<strong>b</strong>|| / range ) / A } )
 Spherical: k(<strong>a</strong>,<strong>b</strong>) = w[0] + w[1] * ( 1.5 * ( ||<strong>a</strong>-<strong>b</strong>|| / range ) - 0.5 * ( ||<strong>a</strong>-<strong>b</strong>|| / range )<sup>3</sup> )</pre>
-	    <p>Bayesian regression is used to estimate the parameters with the prior:/<p>
+	    <p>Bayesian regression is used to estimate the parameters with the prior:</p>
 	    <pre><b>w</b> ~ N(w|<strong>0</strong>, &alpha;<strong>I</strong>)</pre>
 	</li>
 	<li>
-	  <h3>Prior and noise process</h3>
-	</li>
-	<li>
 	  <h3>Mapping methods</h3>
+	  <p>Prediction using this model &ttilde;</p>
 	</li>
       </ul>
       <p></p>
