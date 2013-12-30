@@ -47,6 +47,7 @@
       } 
       #map {
         background-color: red;
+        width: 100%;
       }
     </style>
   </head>
@@ -76,7 +77,6 @@
       // Init canvas dimensions
       var canvas = document.getElementById("map");
       var header = document.getElementById("header");
-      canvas.width = window.innerWidth;
       canvas.height = window.innerHeight - header.clientHeight;
 
       // Set up event handlers
