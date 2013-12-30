@@ -106,7 +106,7 @@ var fitModel = kriging.train(t, x, y, model, 0, 100);</pre>
 	<li>
           <h3>Probability Model</h3>
           <p>The model used is a 2-dimensional gaussian process with a prior on the parameters of the kernel function. A variety of different kernel functions (or variogram models) are included - exponential, gaussian or spherical. The variance &sigma;<sup>2</sup> of the noise process is adjustable providing a smoothing effect by increasing the uncertainty.</p>
-	  <pre>y ~ N(<b>0</b>, <b>K</b>)
+	  <pre><b>y</b>&nbsp;&nbsp; ~ N(<b>0</b>, <b>K</b>)
 <b>t</b>|<b>y</b> ~ N(<b>t</b>|<b>y</b>, &sigma;<sup>2</sup><b>I</b>)</pre>
 
         </li>
