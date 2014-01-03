@@ -50,7 +50,7 @@
         padding-right: 10px;
       } 
       #map {
-        background-color: red;
+
       }
     </style>
   </head>
@@ -81,7 +81,7 @@
       var canvas = document.getElementById("map");
       var header = document.getElementById("header");
       canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight - header.clientHeight;
+      canvas.height = 10; //window.innerHeight - header.clientHeight;
 
       // Set up event handlers
       
@@ -121,7 +121,7 @@ Spherical: k(<strong>a</strong>,<strong>b</strong>) = w[0] + w[1] * ( 1.5 * ( ||
 	</li>
 	<li>
 	  <h3>Mapping methods</h3>
-	  <p>Prediction using this model &ttilde;</p>
+	  <p>Grid and vector based mapping methods are available within the instantiated kriging object.</p>
 	</li>
       </ul>
       <p></p>
