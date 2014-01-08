@@ -4,6 +4,7 @@
     <title>kriging.js</title>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Metrophobic">  
     <script src="http://rawgithub.com/oeo4b/kriging.js/master/kriging.js" type="text/javascript"></script>
+    <script src="polygons/world.js" type="text/javascript"></script>
     <style type="text/css">
       * {
         margin: 0px;
@@ -38,7 +39,7 @@
       .logo {
         font-size: 36px;
       }
-      #header {
+      #header, #footer {
         padding: 10px;
       }
       #header ul {
@@ -80,8 +81,8 @@
       // Init canvas dimensions
       var canvas = document.getElementById("map");
       var header = document.getElementById("header");
-      canvas.width = window.innerWidth;
-      canvas.height = 10; //window.innerHeight - header.clientHeight;
+      canvas.width = window.innerWidth;        
+      canvas.height = canvas.width/2;
 
       // Set up event handlers
       
@@ -92,7 +93,7 @@
       <p>The easiest way to get started is to <a href="http://rawgithub.com/oeo4b/kriging.js/master/kriging.js" download="kriging.js">download</a> the Javascript library (or link directly to krigingjs.com/kriging.js) and attach it to your html code. Then, to train a <a href="#documentation">model</a> with coordinates (<strong>x</strong>, <strong>y</strong>) and values <strong>t</strong> on <a href="#documentation">parameters</a> &sigma;<sup>2</sup> and &alpha;:</p>
       <pre>var model = "exponential";
 var sigma2 = 0, alpha = 100;
-var fitModel = kriging.train(t, x, y, model, 0, 100);</pre>
+var fitModel = kriging.train(t, x, y, model, sigma2, alpha);</pre>
       <p>To predict points at a new point in space (<strong>x<sub>new</sub></strong>, <strong>y<sub>new</sub></strong>):</p>
       <pre>var tnew = kriging.predict(xnew, ynew, fitModel);</pre>
     <div id="examples"></div>
@@ -124,7 +125,7 @@ Spherical: k(<strong>a</strong>,<strong>b</strong>) = w[0] + w[1] * ( 1.5 * ( ||
       </ul>
       <p></p>
     <div id="footer">
-      <small style="padding-left: 20px">Copyright 2011-2014. Released under <a href="http://opensource.org/licenses/MIT">The MIT License</a>.</small>
+      <small>Copyright 2011-2014. Released under <a href="http://opensource.org/licenses/MIT">The MIT License</a>.</small>
     </div>
   </body>
 </html>
