@@ -37,7 +37,7 @@
         color: grey;
       }
       .logo {
-        font-size: 36px;
+        font-size: 42px;
       }
       #header, #footer {
         padding: 10px;
@@ -51,7 +51,11 @@
         padding-right: 10px;
       } 
       #map {
-
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: 100%;
       }
     </style>
   </head>
@@ -59,13 +63,7 @@
     <div id="header">
       <ul>
 	<li>
-	  <b><a class="logo">kriging.js</a></b>
-	</li>
-	<li>
 	  <a href="http://rawgithub.com/oeo4b/kriging.js/master/kriging.js" download="kriging.js">Download</a>
-	</li>
-	<li>
-	  <a href="#what">What is this?</a>
 	</li>
 	<li>
 	  <a href="#examples">Examples</a>
@@ -74,6 +72,7 @@
 	  <a href="#documentation">Documentation</a>
 	</li>
       </ul>
+      <b><a class="logo">kriging.js</a></b>
     </div>
     <canvas id="map">
     </canvas>
@@ -81,7 +80,6 @@
       // Init canvas dimensions
       var canvas = document.getElementById("map");
       var header = document.getElementById("header");
-      canvas.width = window.innerWidth;        
       canvas.height = canvas.width/2;
 
       // Random data
@@ -104,15 +102,15 @@
         width = 2;
       else width = 0.5;
 
+      // Spectrum
+      var colors = ["#00A600FF", "#01A600FF", "#03A700FF", "#04A700FF", "#05A800FF", "#07A800FF", "#08A900FF", "#09A900FF", "#0BAA00FF", "#0CAA00FF", "#0DAB00FF", "#0FAB00FF", "#10AC00FF", "#12AC00FF", "#13AD00FF", "#14AD00FF", "#16AE00FF", "#17AE00FF", "#19AF00FF", "#1AAF00FF", "#1CB000FF", "#1DB000FF", "#1FB100FF", "#20B100FF", "#22B200FF", "#23B200FF", "#25B300FF", "#26B300FF", "#28B400FF", "#29B400FF", "#2BB500FF", "#2CB500FF", "#2EB600FF", "#2FB600FF", "#31B700FF", "#33B700FF", "#34B800FF", "#36B800FF", "#37B900FF", "#39B900FF", "#3BBA00FF", "#3CBA00FF", "#3EBB00FF", "#3FBB00FF", "#41BC00FF", "#43BC00FF", "#44BD00FF", "#46BD00FF", "#48BE00FF", "#49BE00FF", "#4BBF00FF", "#4DBF00FF", "#4FC000FF", "#50C000FF", "#52C100FF", "#54C100FF", "#55C200FF", "#57C200FF", "#59C300FF", "#5BC300FF", "#5DC400FF", "#5EC400FF", "#60C500FF", "#62C500FF", "#64C600FF", "#66C600FF", "#67C700FF", "#69C700FF", "#6BC800FF", "#6DC800FF", "#6FC900FF", "#71C900FF", "#72CA00FF", "#74CA00FF", "#76CB00FF", "#78CB00FF", "#7ACC00FF", "#7CCC00FF", "#7ECD00FF", "#80CD00FF", "#82CE00FF", "#84CE00FF", "#86CF00FF", "#88CF00FF", "#8AD000FF", "#8BD000FF", "#8DD100FF", "#8FD100FF", "#91D200FF", "#93D200FF", "#95D300FF", "#97D300FF", "#9AD400FF", "#9CD400FF", "#9ED500FF", "#A0D500FF", "#A2D600FF", "#A4D600FF", "#A6D700FF", "#A8D700FF", "#AAD800FF", "#ACD800FF", "#AED900FF", "#B0D900FF", "#B2DA00FF", "#B5DA00FF", "#B7DB00FF", "#B9DB00FF", "#BBDC00FF", "#BDDC00FF", "#BFDD00FF", "#C2DD00FF", "#C4DE00FF", "#C6DE00FF", "#C8DF00FF", "#CADF00FF", "#CDE000FF", "#CFE000FF", "#D1E100FF", "#D3E100FF", "#D6E200FF", "#D8E200FF", "#DAE300FF", "#DCE300FF", "#DFE400FF", "#E1E400FF", "#E3E500FF", "#E6E600FF", "#E6E402FF", "#E6E204FF", "#E6E105FF", "#E6DF07FF", "#E6DD09FF", "#E6DC0BFF", "#E6DA0DFF", "#E6D90EFF", "#E6D710FF", "#E6D612FF", "#E7D414FF", "#E7D316FF", "#E7D217FF", "#E7D019FF", "#E7CF1BFF", "#E7CE1DFF", "#E7CD1FFF", "#E7CB21FF", "#E7CA22FF", "#E7C924FF", "#E8C826FF", "#E8C728FF", "#E8C62AFF", "#E8C52BFF", "#E8C42DFF", "#E8C32FFF", "#E8C231FF", "#E8C133FF", "#E8C035FF", "#E8BF36FF", "#E9BE38FF", "#E9BD3AFF", "#E9BC3CFF", "#E9BB3EFF", "#E9BB40FF", "#E9BA42FF", "#E9B943FF", "#E9B945FF", "#E9B847FF", "#E9B749FF", "#EAB74BFF", "#EAB64DFF", "#EAB64FFF", "#EAB550FF", "#EAB552FF", "#EAB454FF", "#EAB456FF", "#EAB358FF", "#EAB35AFF", "#EAB35CFF", "#EBB25DFF", "#EBB25FFF", "#EBB261FF", "#EBB263FF", "#EBB165FF", "#EBB167FF", "#EBB169FF", "#EBB16BFF", "#EBB16CFF", "#EBB16EFF", "#ECB170FF", "#ECB172FF", "#ECB174FF", "#ECB176FF", "#ECB178FF", "#ECB17AFF", "#ECB17CFF", "#ECB17EFF", "#ECB27FFF", "#ECB281FF", "#EDB283FF", "#EDB285FF", "#EDB387FF", "#EDB389FF", "#EDB38BFF", "#EDB48DFF", "#EDB48FFF", "#EDB591FF", "#EDB593FF", "#EDB694FF", "#EEB696FF", "#EEB798FF", "#EEB89AFF", "#EEB89CFF", "#EEB99EFF", "#EEBAA0FF", "#EEBAA2FF", "#EEBBA4FF", "#EEBCA6FF", "#EEBDA8FF", "#EFBEAAFF", "#EFBEACFF", "#EFBFADFF", "#EFC0AFFF", "#EFC1B1FF", "#EFC2B3FF", "#EFC3B5FF", "#EFC4B7FF", "#EFC5B9FF", "#EFC7BBFF", "#F0C8BDFF", "#F0C9BFFF", "#F0CAC1FF", "#F0CBC3FF", "#F0CDC5FF", "#F0CEC7FF", "#F0CFC9FF", "#F0D1CBFF", "#F0D2CDFF", "#F0D3CFFF", "#F1D5D1FF", "#F1D6D3FF", "#F1D8D5FF", "#F1D9D7FF", "#F1DBD8FF", "#F1DDDAFF", "#F1DEDCFF", "#F1E0DEFF", "#F1E2E0FF", "#F1E3E2FF", "#F2E5E4FF", "#F2E7E6FF", "#F2E9E8FF", "#F2EBEAFF", "#F2ECECFF", "#F2EEEEFF", "#F2F0F0FF", "#F2F2F2FF"];
+
       // Plot grid
-      kriging.plot(
-        canvas,
-        kriging.grid(world, variogram, width),
-        [-180, 180], [-90, 90]);
+      var grid = kriging.grid(world, variogram, width);
+      kriging.plot(canvas, grid, [-180, 180], [-90, 90], colors);
 
     </script>
     <div id="what"></div>
-      <h2>What is this?</h2>
       <p><strong>kriging.js</strong> is a Javascript library for mapping and predicting spatial data using the <a href="http://en.wikipedia.org/wiki/Kriging" target="_newtab">kriging algorithm</a>. This library allows one to model spatial data and generate maps by predicting new values within the range of the given data.</p>
       <p>The easiest way to get started is to <a href="http://rawgithub.com/oeo4b/kriging.js/master/kriging.js" download="kriging.js">download</a> the Javascript library (or link directly to krigingjs.com/kriging.js) and attach it to your html code. Then, to train a <a href="#documentation">model</a> with coordinates (<strong>x</strong>, <strong>y</strong>) and values <strong>t</strong> on <a href="#documentation">parameters</a> &sigma;<sup>2</sup> and &alpha;:</p>
       <pre>var model = "exponential";
