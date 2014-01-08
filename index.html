@@ -84,8 +84,32 @@
       canvas.width = window.innerWidth;        
       canvas.height = canvas.width/2;
 
-      // Set up event handlers
+      // Random data
+      var i, n = 100;
+      var t = Array(n);
+      var x = Array(n);
+      var y = Array(n);
+      for(i=0;i<n;i++) {
+          t[i] = Math.random()*100;
+          x[i] = (-180)+Math.random()*360;
+          y[i] = (-90)+Math.random()*180;
+      }
       
+      // Fit data
+      var variogram = kriging.train(t, x, y, "exponential", 0, 10);
+      
+      // Increase width for mobile
+      var width;
+      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+        width = 2;
+      else width = 0.5;
+
+      // Plot grid
+      kriging.plot(
+        canvas,
+        kriging.grid(world, variogram, width),
+        [-180, 180], [-90, 90]);
+
     </script>
     <div id="what"></div>
       <h2>What is this?</h2>
