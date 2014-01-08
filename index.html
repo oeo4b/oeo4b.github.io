@@ -33,6 +33,11 @@
         padding-top: 10px;
         padding-bottom: 10px;
         color: grey;
+        white-space: pre-wrap;      
+        white-space: -moz-pre-wrap; 
+        white-space: -pre-wrap;     
+        white-space: -o-pre-wrap;   
+        word-wrap: break-word;      
       }
       ul {
         list-style-type: none;
@@ -122,11 +127,16 @@ var fitModel = kriging.train(t, x, y, model, sigma2, alpha);</pre>
         <p>To predict points at a new point in space (<strong>x<sub>new</sub></strong>, <strong>y<sub>new</sub></strong>):</p>
         <pre>var tnew = kriging.predict(xnew, ynew, fitModel);</pre>
       <div id="examples"></div>
-        <h2>Creating Maps</h2>
-        <p></p>
-      <div id="documentation"></div>
-        <h2>Documentation</h2>
         <ul>
+	  <li>
+            <h2>Creating Maps</h2>
+	  </li>
+	</ul>
+      <div id="documentation"></div>
+        <ul>
+	  <li>
+            <h2>Documentation</h2>
+	  </li>
 	  <li>
             <h3>Probability Model</h3>
             <p>The model used is a 2-dimensional gaussian process, <b>y</b>, with a prior on the parameters of the kernel function. One of a variety of different kernel functions (or variogram models) generate the Gram matrix <b>K</b>. The variance &sigma;<sup>2</sup> of the noise process is adjustable, providing a smoothing effect by increasing the uncertainty of the likelihood <b>t</b>.</p>
