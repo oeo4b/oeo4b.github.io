@@ -75,10 +75,13 @@
 	    <a href="http://rawgithub.com/oeo4b/kriging.js/master/kriging.js" download="kriging.js">Download</a>
 	  </li>
 	  <li>
-	    <a href="#examples">Examples</a>
+	    <a href="#start">Getting Started</a>
 	  </li>
 	  <li>
 	    <a href="#documentation">Documentation</a>
+	  </li>
+	  <li>
+	    <a href="http://www.github.com/oeo4b/kriging.js">Source</a>
 	  </li>
 	</ul>
       </div>
@@ -91,14 +94,23 @@
 	canvas.height = canvas.width/2;
 
 	// Random data
-	var i, n = 100;
+	var i, j, k, n = 100;
 	var t = Array(n);
 	var x = Array(n);
 	var y = Array(n);
-	for(i=0;i<n;i++) {
+	for(i=0,k=false;i<n;i++,k=false) {
           t[i] = Math.random()*100;
-          x[i] = (-180)+Math.random()*360;
-          y[i] = (-90)+Math.random()*180;
+          while(k==false) {
+            x[i] = (-180)+Math.random()*360;
+            y[i] = (-90)+Math.random()*180;
+	    for(j=0;j<world.length;j++) {
+              if(world[j].pip(x[i], y[i])) {
+	        k = true;
+                break;
+              }
+  	    }
+            if(k) break;
+          }
         }
    
         // Fit data
@@ -118,8 +130,8 @@
         kriging.plot(canvas, grid, [-180, 180], [-90, 90], colors);
 
       </script>
-      <div id="what"></div>
-        <p><strong>kriging.js</strong> is a Javascript library for mapping and predicting spatial data using the <a href="http://en.wikipedia.org/wiki/Kriging" target="_newtab">kriging algorithm</a>. This library allows one to model spatial data and generate maps by predicting new values within the range of the given data.</p>
+      <div id="start"></div>
+        <p><strong>kriging.js</strong> is a Javascript library for mapping and predicting spatial data using the <a href="http://en.wikipedia.org/wiki/Kriging" target="_newtab">kriging algorithm</a>. This library allows one to model and map spatial data.</p>
         <p>The easiest way to get started is to <a href="http://rawgithub.com/oeo4b/kriging.js/master/kriging.js" download="kriging.js">download</a> the Javascript library (or link directly to krigingjs.com/kriging.js) and attach it to your html code. Then, to train a <a href="#documentation">model</a> with coordinates (<strong>x</strong>, <strong>y</strong>) and values <strong>t</strong> on <a href="#documentation">parameters</a> &sigma;<sup>2</sup> and &alpha;:</p>
         <pre>var model = "exponential";
 var sigma2 = 0, alpha = 100;
